@@ -1,7 +1,12 @@
 package io.bootique.rabbitmq.client.demo.receiver;
 
 import com.google.inject.Inject;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Consumer;
+import com.rabbitmq.client.DefaultConsumer;
+import com.rabbitmq.client.Envelope;
 import io.bootique.rabbitmq.client.channel.ChannelFactory;
 import io.bootique.rabbitmq.client.connection.ConnectionFactory;
 
