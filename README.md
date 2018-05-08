@@ -23,30 +23,61 @@ git clone https://github.com/bootique-examples/bootique-rabbitmq-client-demo.git
 cd bootique-rabbitmq-client-demo
 mvn package
 ```
+# Available commands
+
+To see all available commands run demo without arguments:
+
+```
+java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar
+```
+
+You will see help:
+
+```
+NAME
+      bootique-rebbitmq-demo-1.0-SNAPSHOT.jar
+
+OPTIONS
+      -c yaml_location, --config=yaml_location
+           Specifies YAML config location, which can be a file path or a URL.
+
+      -h, --help
+           Prints this message.
+
+      -H, --help-config
+           Prints information about application modules and their configuration options.
+
+      -m [val], --message[=val]
+           Message to send
+
+      -r, --receive
+           Receive messages from RabbitMQ
+
+      -s, --send
+           Send message to RabbitMQ
+```
 
 # Run the demo
 
-Send messages to rabbitmq channel with -s (--sender):
+Send messages to rabbitmq channel with `--send` (`-s`) command:
+
 ```
-java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -s
+java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -s -m "Hello World"
 ```
 
 You will see the result
 
 ```
- [x] Smaug sent 4 messages
+...  Sent message: hello world
 ```
 
-Receive messages from rabbitmq channel with -r (--receiver):
+Receive messages from rabbitmq channel with `--receive` (`-r`) command:
 ```
 java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -r
 ```
 
 You will see the result
 ```
- [*] Waiting for messages. To exit press CTRL+C
- [x] Received 'Revenge?! REVENGE?!'
- [x] Received 'I will show you REVENGE!'
- [x] Received 'I am fire.'
- [x] Received 'I am... DEATH.'
+...  [*] Waiting for messages. To exit press CTRL+C
+...  [x] Received 'Hello World'
 ```

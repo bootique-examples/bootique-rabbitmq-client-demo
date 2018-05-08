@@ -38,6 +38,10 @@
             <groupId>io.bootique.rabbitmq.client</groupId>
             <artifactId>bootique-rabbitmq-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.bootique.logback</groupId>
+            <artifactId>bootique-logback</artifactId>
+        </dependency>
     </dependencies>
 
 
