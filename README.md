@@ -12,7 +12,6 @@ First you should install the rabbitmq docker image with the command:
 
 ```
 docker run -d --name rbbt -e RABBITMQ_DEFAULT_USER=guest -e RABBITMQ_DEFAULT_PASS=guest -p 55672:5672/tcp rabbitmq:latest
-
 ```
  Now you will have acces to rabbitmq with url - localhost:55672
 
@@ -26,15 +25,25 @@ mvn package
 ```
 
 # Run the demo
+
+Send messages to rabbitmq channel with -s (--sender):
 ```
-java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar
+java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -s
 ```
 
 You will see the result
 
 ```
  [x] Smaug sent 4 messages
+```
 
+Receive messages from rabbitmq channel with -r (--receiver):
+```
+java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -r
+```
+
+You will see the result
+```
  [*] Waiting for messages. To exit press CTRL+C
  [x] Received 'Revenge?! REVENGE?!'
  [x] Received 'I will show you REVENGE!'
