@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class ReceiverCommand extends CommandWithMetadata {
 
@@ -58,7 +59,7 @@ public class ReceiverCommand extends CommandWithMetadata {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
                     throws IOException {
-                String message = new String(body, "UTF-8");
+                String message = new String(body, StandardCharsets.UTF_8);
                 LOGGER.info(" [x] Received '" + message + "'");
             }
         };

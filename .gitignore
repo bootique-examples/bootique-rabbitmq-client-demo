@@ -8,3 +8,5 @@
 target
 *.iml
 .idea
+dependency-reduced-pom.xml
+hs_err_pid*
