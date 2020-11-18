@@ -28,14 +28,14 @@ mvn package
 To see all available commands run demo without arguments:
 
 ```
-java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar
+java -jar target/bootique-rebbitmq-demo-2.0.jar
 ```
 
 You will see help:
 
 ```
 NAME
-      bootique-rebbitmq-demo-1.0-SNAPSHOT.jar
+      bootique-rebbitmq-demo-2.0.jar
 
 OPTIONS
       -c yaml_location, --config=yaml_location
@@ -62,18 +62,18 @@ OPTIONS
 Send messages to rabbitmq channel with `--send` (`-s`) command:
 
 ```
-java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -s -m "Hello World"
+java -jar target/bootique-rebbitmq-demo-2.0.jar -s -m "Hello World"
 ```
 
 You will see the result
 
 ```
-...  Sent message: hello world
+...  Sent message: Hello World
 ```
 
 Receive messages from rabbitmq channel with `--receive` (`-r`) command:
 ```
-java -jar target/bootique-rebbitmq-demo-1.0-SNAPSHOT.jar -r
+java -jar target/bootique-rebbitmq-demo-2.0.jar -r
 ```
 
 You will see the result

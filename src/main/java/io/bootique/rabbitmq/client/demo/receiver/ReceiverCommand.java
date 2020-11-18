@@ -1,7 +1,5 @@
 package io.bootique.rabbitmq.client.demo.receiver;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -17,6 +15,8 @@ import io.bootique.rabbitmq.client.connection.ConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
