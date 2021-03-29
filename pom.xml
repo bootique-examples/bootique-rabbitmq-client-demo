@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>io.bootique.rabbitmq.demo</groupId>
-    <artifactId>bootique-rebbitmq-demo</artifactId>
+    <artifactId>bootique-rabbitmq-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
