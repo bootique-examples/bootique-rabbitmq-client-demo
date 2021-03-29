@@ -1,3 +1,4 @@
+[![verify](https://github.com/bootique-examples/bootique-rabbitmq-client-demo/actions/workflows/verify.yml/badge.svg)](https://github.com/bootique-examples/bootique-rabbitmq-client-demo/actions/workflows/verify.yml)
 # bootique-rabbitmq-client-demo
 
 Simple [Bootique](http://bootique.io) app demonstrating the Bootique rabbitmq  module.
