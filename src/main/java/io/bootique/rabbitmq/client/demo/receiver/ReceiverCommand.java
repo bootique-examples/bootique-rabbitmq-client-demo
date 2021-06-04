@@ -1,22 +1,16 @@
 package io.bootique.rabbitmq.client.demo.receiver;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.Consumer;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.*;
 import io.bootique.cli.Cli;
 import io.bootique.command.CommandOutcome;
 import io.bootique.command.CommandWithMetadata;
 import io.bootique.meta.application.CommandMetadata;
-import io.bootique.rabbitmq.client.channel.ChannelFactory;
-import io.bootique.rabbitmq.client.connection.ConnectionFactory;
+import io.bootique.rabbitmq.client.channel.RmqChannelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -28,14 +22,12 @@ public class ReceiverCommand extends CommandWithMetadata {
     private static final String EXCHANGE_NAME = "bqExchange";
     private static final String QUEUE_NAME = "bqQueue";
 
-    private Provider<ConnectionFactory> connectionFactory;
-    private Provider<ChannelFactory> channelFactory;
+    private final Provider<RmqChannelFactory> channelFactory;
 
     @Inject
-    public ReceiverCommand(Provider<ConnectionFactory> connectionFactory, Provider<ChannelFactory> channelFactory) {
+    public ReceiverCommand(Provider<RmqChannelFactory> channelFactory) {
         super(CommandMetadata.builder(ReceiverCommand.class)
                 .name("receive").description("Receive messages from RabbitMQ").build());
-        this.connectionFactory = connectionFactory;
         this.channelFactory = channelFactory;
     }
 
@@ -51,8 +43,10 @@ public class ReceiverCommand extends CommandWithMetadata {
     }
 
     private void receive() throws IOException, InterruptedException {
-        Connection connection = connectionFactory.get().forName(CONNECTION_NAME);
-        Channel channel = channelFactory.get().openChannel(connection, EXCHANGE_NAME, QUEUE_NAME, "");
+        Channel channel = channelFactory.get().newChannel(CONNECTION_NAME)
+                .ensureExchange(EXCHANGE_NAME)
+                .ensureQueue(QUEUE_NAME)
+                .open();
 
         LOGGER.info(" [*] Waiting for messages. To exit press CTRL+C");
         Consumer consumer = new DefaultConsumer(channel) {

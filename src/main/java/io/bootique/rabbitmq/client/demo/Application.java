@@ -1,13 +1,13 @@
 package io.bootique.rabbitmq.client.demo;
 
-import com.google.inject.Binder;
-import com.google.inject.Module;
 import io.bootique.BQCoreModule;
 import io.bootique.Bootique;
+import io.bootique.di.BQModule;
+import io.bootique.di.Binder;
 import io.bootique.rabbitmq.client.demo.receiver.ReceiverCommand;
 import io.bootique.rabbitmq.client.demo.sender.SenderCommand;
 
-public class Application implements Module {
+public class Application implements BQModule {
     public static void main(String[] args) {
         Bootique
                 .app(args)
